@@ -1,0 +1,12 @@
+{
+  "generator-yeogurt": {
+    "config": {
+      "projectName": "getNinja",
+      "htmlOption": "jade",
+      "jsPreprocessor": "es6",
+      "cssOption": "stylus",
+      "testFramework": "none"
+    },
+    "version": "1.5.2"
+  }
+}

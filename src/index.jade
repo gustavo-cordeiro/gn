@@ -1,0 +1,33 @@
+extends _layouts/base
+
+block content
+  .container
+    form.form
+      fieldset.inputs
+        ol
+          li.input
+            label.label Qual será o serviço?
+            ul
+              li.input__item
+                input.input__check(type="checkbox" name="Qual será o serviço?" value="Coloração")
+                label.input__label Coloração
+              li.input__item
+                input.input__check(type="checkbox" name="Qual será o serviço?" value="Coloração")
+                label.input__label Coloração
+              li.input__item
+                input.input__check(type="checkbox" name="Qual será o serviço?" value="Coloração")
+                label.input__label Coloração
+              li.input__item
+                input.input__check(type="checkbox" name="Qual será o serviço?" value="Coloração")
+                label.input__label Coloração
+          li.input
+            label.label O serviço será para quantas pessoas?
+            select.input__select(id="O serviço será para quantas pessoas?" name="O serviço será para quantas pessoas?" placeholder="O serviço será para quantas pessoas?")
+              option(value="") indique o número de pessoas
+              option(value="1") 1
+              option(value="2") 2
+              option(value="Mais de 3") Mais de 3
+      fieldset.inputs
+        a.submit Continuar
+
+
