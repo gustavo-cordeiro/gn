@@ -8,6 +8,13 @@ function _getRequiredInputName($elements) {
   return [... new Set(allNames)];
 }
 
+function _renderError($label, info) {
+  const $errorTag = $('<span>');
+  $errorTag.addClass('error').text(info);
+
+  return $label.after($errorTag);
+}
+
 function _validate($element, names) {
   const values = names.map(name => {
     const $el = $element.find(`[name='${name}']`);
@@ -15,9 +22,15 @@ function _validate($element, names) {
 
     if($el.get(1)) {
       val = $el.filter(':checked').val() || '';
+      if(val === '') {
+        _renderError($el.closest('.input').find('.label'), 'Marque pelo menos uma opção');
+      }
     }
     else {
       val = $el.val();
+      if(val === '') {
+        _renderError($el.closest('.input').find('.label'), 'Este campo é requerido');
+      }
     }
 
     return val;
@@ -94,13 +107,14 @@ class NinjaForm {
   }
 
   validateRequiredRequestInputs() {
+    this.$form.find('.error').remove();
     return _validate(this.$request, this.requiredRequestInputsNames);
   }
 
   validateUserRequestInputs() {
+    this.$form.find('.error').remove();
     return _validate(this.$user, this.requiredUserInputsNames);
   }
-
 }
 
 $(() => {
