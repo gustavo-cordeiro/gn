@@ -1,0 +1,19 @@
+include ./txt
+include ./big-text
+include ./enumerable
+
+mixin input(input)
+  - type = input.type
+
+  if type == 'enumerable'
+    +enumerable(input)
+  else if type == 'big_text'
+    +big-text(input)
+  else if type == 'lat_lng'
+    +txt(input)
+  else if type == 'phone'
+    +txt(input)(type='phone')
+  else if type == 'email'
+    +txt(input)(type='email')
+  else
+    +txt(input)

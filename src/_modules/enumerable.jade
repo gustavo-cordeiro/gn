@@ -1,0 +1,24 @@
+mixin enumerable(input)
+  if input.allow_multiple_value
+    - count = 0
+    each val, key in input.values
+      - itemId = input.name + '-' + (++count)
+      li.input__item
+        input.input__check(
+          id=itemId
+          type="checkbox"
+          name=input.name
+          value=key
+          data-required=input.required
+        )
+        label.input__label(for=itemId) #{val}
+  else
+    li
+      select.input__select(
+        id=input.name
+        name=input.name
+        data-required=input.required
+      )
+        option(value="") #{input.mask}
+        each val, key in input.values
+          option(value=key) #{val}
